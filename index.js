@@ -1,4 +1,4 @@
-const genetareNumbersRange = (from, to) => {
+const generateNumbersRange = (from, to) => {
   const result = []
 
   for (let i = from; i <= to; i++) {
@@ -9,7 +9,7 @@ const genetareNumbersRange = (from, to) => {
 };
 
 const getLineSeats = () =>
-  genetareNumbersRange(1, 10)
+  generateNumbersRange(1, 10)
     .map(seatNumber => 
       `<div 
       class="sector__seat" data-seat-number="${seatNumber}"
@@ -18,7 +18,7 @@ const getLineSeats = () =>
 
 const getSectorLines = () => {
   const seatsString = getLineSeats();
-  return genetareNumbersRange(1, 10)
+  return generateNumbersRange(1, 10)
     .map(lineNumber => 
       `<div 
       class="sector__line" data-line-number="${lineNumber}"
@@ -31,7 +31,7 @@ const arenaElem = document.querySelector('.arena');
 const renderArena = () => {
   const linesString = getSectorLines();
 
-  const sectorsString = genetareNumbersRange(1, 3)
+  const sectorsString = generateNumbersRange(1, 3)
     .map(sectorNumber => 
       `<div 
       class="sector" data-sector-number="${sectorNumber}"
@@ -51,7 +51,7 @@ const onSeatSelect = event => {
   const lineNumber = event.target.closest('.sector__line').dataset.lineNumber
   const sectorNumber = event.target.closest('.sector').dataset.sectorNumber
 
-  const selectedSeatElem = document.querySelector('.board__selected')
+  const selectedSeatElem = document.querySelector('.board__selected');
 
   selectedSeatElem.textContent = `S ${sectorNumber} - L ${lineNumber} - S ${seatNumber}`
 }
